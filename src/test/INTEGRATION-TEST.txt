@@ -68,5 +68,5 @@ STEPS:
     vi) remindDelta      -  Use a positive integer value lower than 1440 for the minutes to use in reminder.
     vii)timeOut          -  Time out value for waiting since the podio API limit the continuous endpoint calls (recommended value is 5000)
 
-8.Navigate to "<ESB_CONNECTORS_HOME>" and run the following command.
+8.Navigate to "{Podio_Connector_Home}" and run the following command.
              $ mvn clean install
