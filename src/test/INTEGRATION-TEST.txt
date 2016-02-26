@@ -25,7 +25,7 @@ STEPS:
 3. Follow the below mentioned steps to create a new Podio account:
 
     i)   Navigate to the following url and create an account in Podio: https://podio.com/signup and activate the account.
-    ii)  Login to Podio account and navigate to 'API Keys' tab in "Account Settings", retrieve the Client ID and Client Secret and save it for further use.
+    ii)  Login to Podio account and navigate to 'API Keys' tab in "Account Settings", retrieve the Client ID and Client Secret and save           it for further use.
     iii) Generate the Access Token as mentioned in the following URL. https://developers.podio.com/authentication
 
 4. Follow the below mentioned steps to add valid certificate to access Podio API over https.
@@ -40,17 +40,17 @@ STEPS:
          This command will import Podio certificate into keystore. 
          To import the certificate give "wso2carbon" as password. Press "Y" to complete certificate import process.
 
-         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio.crt)
+         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio                 .crt)
                 CERT_NAME - Replace CERT_NAME with an arbitrary name for the certificate. (e.g. Podio)
 
-    iv) Navigate to "{Podio_Connector_Home}/src/test/resources/keystores/products/" using command prompt and execute the following command.
+    iv) Navigate to "{Podio_Connector_Home}/src/test/resources/keystores/products/" using command prompt and execute the following      command.
 
                 keytool -importcert -file CERT_FILE_NAME -keystore wso2carbon.jks -alias "CERT_NAME" 
 
          This command will import Podio certificate in to keystore. Give "wso2carbon" as password.
          To import the certificate give "wso2carbon" as password. Press "Y" to complete certificate import process.
 
-         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio.crt)
+         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio                 .crt)
                 CERT_NAME - Replace CERT_NAME with an arbitrary name for the certificate. (e.g. Podio).
 
 5. Compress modified ESB as wso2esb-4.9.0.zip and copy that zip file in to location "{Podio_Connector_Home}/podio-connector/podio-connector-1.0.0/org.wso2.carbon.connector/repository/".
@@ -68,5 +68,5 @@ STEPS:
     vi) remindDelta      -  Use a positive integer value lower than 1440 for the minutes to use in reminder.
     vii)timeOut          -  Time out value for waiting since the podio API limit the continuous endpoint calls (recommended value is 5000)
 
-8.Navigate to "<ESB_CONNECTORS_HOME>" and run the following command.
+8.Navigate to "{Podio_Connector_Home}" and run the following command.
              $ mvn clean install
