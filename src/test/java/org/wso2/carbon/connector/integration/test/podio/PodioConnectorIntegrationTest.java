@@ -48,7 +48,7 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    @BeforeClass(alwaysRun = true)
    public void setEnvironment() throws Exception {
    
-      init("podio-connector-1.0.0");
+      init("podio-connector-1.0.1-SNAPSHOT");
 
       esbRequestHeadersMap = new HashMap<String, String>();
       apiRequestHeadersMap = new HashMap<String, String>();
