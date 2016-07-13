@@ -11,11 +11,11 @@ Product: Integration tests for WSO2 ESB Podio connector
 
     - Microsoft WINDOWS V-7
     - Ubuntu 14.04
-    - WSO2 ESB-4.9.0
+    - WSO2 ESB-4.9.0, 5.0.0-BETA
  
 STEPS:
 
-1. Make sure the ESB 4.9.0 zip file at "{ESB-CONNECTORS-HOME}/repository/"
+1. Make sure the ESB 5.0.0-BETA zip file at "{ESB-CONNECTORS-HOME}/repository/" and "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh"
 
 2. Please make sure that Axis configurations are enabled (\repository\conf\axis2\axis2.xml) according to the file type to be uploaded.
    eg:upload text file
@@ -25,13 +25,13 @@ STEPS:
 3. Follow the below mentioned steps to create a new Podio account:
 
     i)   Navigate to the following url and create an account in Podio: https://podio.com/signup and activate the account.
-    ii)  Login to Podio account and navigate to 'API Keys' tab in "Account Settings", retrieve the Client ID and Client Secret and save           it for further use.
+    ii)  Login to Podio account and navigate to 'API Keys' tab in "Account Settings", retrieve the Client ID and Client Secret and save it for further use.
     iii) Generate the Access Token as mentioned in the following URL. https://developers.podio.com/authentication
 
 4. Follow the below mentioned steps to add valid certificate to access Podio API over https.
 
     i)   Extract the certificate from browser(Mozilla Firefox) by navigating to 'https://podio.com/' 
-    ii)  Go to new ESB 4.9.0 folder and place the downloaded certificate into "<ESB_HOME>/repository/resources/security/" and
+    ii)  Go to new ESB 5.0.0-BETA folder and place the downloaded certificate into "<ESB_HOME>/repository/resources/security/" and
          "{Podio_Connector_Home}/src/test/resources/keystores/products" folders.
     iii) Navigate to "<ESB_HOME>/repository/resources/security/" using command prompt and execute the following command.
 
@@ -40,20 +40,20 @@ STEPS:
          This command will import Podio certificate into keystore. 
          To import the certificate give "wso2carbon" as password. Press "Y" to complete certificate import process.
 
-         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio                 .crt)
+         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio.crt)
                 CERT_NAME - Replace CERT_NAME with an arbitrary name for the certificate. (e.g. Podio)
 
-    iv) Navigate to "{Podio_Connector_Home}/src/test/resources/keystores/products/" using command prompt and execute the following      command.
+    iv) Navigate to "{Podio_Connector_Home}/src/test/resources/keystores/products/" using command prompt and execute the following command.
 
                 keytool -importcert -file CERT_FILE_NAME -keystore wso2carbon.jks -alias "CERT_NAME" 
 
          This command will import Podio certificate in to keystore. Give "wso2carbon" as password.
          To import the certificate give "wso2carbon" as password. Press "Y" to complete certificate import process.
 
-         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio                 .crt)
+         NOTE : CERT_FILE_NAME - Replace CERT_FILE_NAME with the file name that was extracted from Podio with the extension. (e.g. podio.crt)
                 CERT_NAME - Replace CERT_NAME with an arbitrary name for the certificate. (e.g. Podio).
 
-5. Compress modified ESB as wso2esb-4.9.0.zip and copy that zip file in to location "{Podio_Connector_Home}/podio-connector/podio-connector-1.0.0/org.wso2.carbon.connector/repository/".
+5. Compress modified ESB as wso2esb-5.0.0-BETA.zip and copy that zip file in to location "{Podio_Connector_Home}/podio-connector/podio-connector-1.0.0/org.wso2.carbon.connector/repository/".
 
 6. Add the file which is used for upload file method to the following location and update the value of the property iii corresponding to the added file.
     Location: "{Podio_Connector_Home}/src/test/resources/artifacts/ESB/config/resources/podio/"
