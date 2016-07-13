@@ -48,7 +48,7 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    @BeforeClass(alwaysRun = true)
    public void setEnvironment() throws Exception {
    
-      init("podio-connector-1.0.1-SNAPSHOT");
+      init("podio-connector-1.0.1");
 
       esbRequestHeadersMap = new HashMap<String, String>();
       apiRequestHeadersMap = new HashMap<String, String>();
@@ -61,7 +61,6 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       apiRequestHeadersMap.putAll(esbRequestHeadersMap);
       apiRequestHeadersMap.put("Authorization", "Bearer " + connectorProperties.getProperty("accessToken"));
       apiRequestHeadersMap.put("Content-Type", "application/json");
-      
    }
    
    /**
@@ -103,7 +102,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Positive test case for getFile method with mandatory parameters.
     */
-   @Test(priority = 1, dependsOnMethods = { "testUploadFile" }, description = "podio {getFile} integration test with mandatory parameters.")
+   @Test(priority = 1, dependsOnMethods = { "testUploadFile" }, description = "podio {getFile} integration test with " +
+                                                                              "mandatory parameters.")
    public void testGetFileWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Content-Type", "application/json");
@@ -125,7 +125,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for getFile method.
     */
-   @Test(priority = 1, dependsOnMethods = { "testGetFileWithMandatoryParameters" }, description = "podio {getFile} integration test with negative case.")
+   @Test(priority = 1, dependsOnMethods = { "testGetFileWithMandatoryParameters" },
+           description = "podio {getFile} integration test with negative case.")
    public void testGetFileWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:getFile");
@@ -140,13 +141,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for createTask method with mandatory parameters.
     */
-   @Test(priority = 1, dependsOnMethods = { "testGetFileWithNegativeCase" }, description = "podio {createTask} integration test with mandatory parameters.")
+   @Test(priority = 1, dependsOnMethods = { "testGetFileWithNegativeCase" },
+           description = "podio {createTask} integration test with mandatory parameters.")
    public void testCreateTaskWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:createTask");
@@ -168,7 +169,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Positive test case for createTask method with optional parameters.
     */
-   @Test(dependsOnMethods = { "testCreateTaskWithMandatoryParameters" }, description = "podio {createTask} integration test with optonal parameters.")
+   @Test(dependsOnMethods = { "testCreateTaskWithMandatoryParameters" },
+           description = "podio {createTask} integration test with optonal parameters.")
    public void testCreateTaskWithOptionalParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:createTask");
@@ -191,7 +193,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for createTask method.
     */
-   @Test(dependsOnMethods = { "testCreateTaskWithOptionalParameters" }, description = "podio {createTask} integration test with negative case.")
+   @Test(dependsOnMethods = { "testCreateTaskWithOptionalParameters" },
+           description = "podio {createTask} integration test with negative case.")
    public void testCreateTaskWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:createTask");
@@ -206,13 +209,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for getTask method with mandatory parameters.
     */
-   @Test(dependsOnMethods = { "testCreateTaskWithNegativeCase" }, description = "podio {getTask} integration test with mandatory parameters.")
+   @Test(dependsOnMethods = { "testCreateTaskWithNegativeCase" },
+           description = "podio {getTask} integration test with mandatory parameters.")
    public void testGetTaskWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:getTask");
@@ -233,7 +236,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for getTask method.
     */
-   @Test(dependsOnMethods = { "testGetTaskWithMandatoryParameters" }, description = "podio {getTask} integration test with negative case.")
+   @Test(dependsOnMethods = { "testGetTaskWithMandatoryParameters" },
+           description = "podio {getTask} integration test with negative case.")
    public void testGetTaskWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:getTask");
@@ -248,13 +252,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for attachFile method with mandatory parameters.
     */
-   @Test(priority = 1, dependsOnMethods = { "testGetTaskWithNegativeCase" }, description = "podio {attachFile} integration test with mandatory parameters.")
+   @Test(priority = 1, dependsOnMethods = { "testGetTaskWithNegativeCase" },
+           description = "podio {attachFile} integration test with mandatory parameters.")
    public void testAttachFileWithMandatoryParameters() throws IOException, JSONException {
    
       apiRequestHeadersMap.remove("Content-Type");
@@ -276,7 +280,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for attachFile method.
     */
-   @Test(priority = 1, dependsOnMethods = { "testAttachFileWithMandatoryParameters" }, description = "podio {attachFile} integration test with negative case.")
+   @Test(priority = 1, dependsOnMethods = { "testAttachFileWithMandatoryParameters" },
+           description = "podio {attachFile} integration test with negative case.")
    public void testAttachFileWithNegativeCase() throws IOException, JSONException, InterruptedException {
    
       esbRequestHeadersMap.put("Action", "urn:attachFile");
@@ -293,13 +298,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for incompleteTask method with mandatory parameters.
     */
-   @Test(priority = 1, dependsOnMethods = { "testAttachFileWithNegativeCase" }, description = "podio {incompleteTask} integration test with mandatory parameters.")
+   @Test(priority = 1, dependsOnMethods = { "testAttachFileWithNegativeCase" },
+           description = "podio {incompleteTask} integration test with mandatory parameters.")
    public void testIncompleteTaskWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:incompleteTask");
@@ -318,7 +323,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for incompleteTask method.
     */
-   @Test(priority = 1, dependsOnMethods = { "testAttachFileWithMandatoryParameters" }, description = "podio {incompleteTask} integration test with negative case.")
+   @Test(priority = 1, dependsOnMethods = { "testAttachFileWithMandatoryParameters" },
+           description = "podio {incompleteTask} integration test with negative case.")
    public void testIncompleteTaskWithNegativeCase() throws IOException, JSONException, InterruptedException {
    
       esbRequestHeadersMap.put("Action", "urn:incompleteTask");
@@ -334,13 +340,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for listTasks method with optional parameters.
     */
-   @Test(dependsOnMethods = { "testIncompleteTaskWithNegativeCase" }, description = "podio {listTasks} integration test with optional parameters.")
+   @Test(dependsOnMethods = { "testIncompleteTaskWithNegativeCase" },
+           description = "podio {listTasks} integration test with optional parameters.")
    public void testListTaskskWithOptionalParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:listTasks");
@@ -370,7 +376,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for listTasks method.
     */
-   @Test(dependsOnMethods = { "testAttachFileWithMandatoryParameters" }, description = "podio {listTasks} integration test with negative case.")
+   @Test(dependsOnMethods = { "testAttachFileWithMandatoryParameters" },
+           description = "podio {listTasks} integration test with negative case.")
    public void testListTasksWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:listTasks");
@@ -385,13 +392,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for createReminder method with mandatory parameters.
     */
-   @Test(dependsOnMethods = { "testListTasksWithNegativeCase" }, description = "podio {createReminder} integration test with mandatory parameters.")
+   @Test(dependsOnMethods = { "testListTasksWithNegativeCase" },
+           description = "podio {createReminder} integration test with mandatory parameters.")
    public void testCreateReminderWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:createReminder");
@@ -412,7 +419,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for createReminder method.
     */
-   @Test(dependsOnMethods = { "testCreateReminderWithMandatoryParameters" }, description = "podio {createReminder} integration test with negative case.")
+   @Test(dependsOnMethods = { "testCreateReminderWithMandatoryParameters" },
+           description = "podio {createReminder} integration test with negative case.")
    public void testCreateReminderWithNegativeCase() throws IOException, JSONException, InterruptedException {
    
       Thread.sleep(timeOut);
@@ -434,7 +442,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Positive test case for getReminder method with mandatory parameters.
     */
-   @Test(dependsOnMethods = { "testCreateReminderWithNegativeCase" }, description = "podio {getReminder} integration test with mandatory parameters.")
+   @Test(dependsOnMethods = { "testCreateReminderWithNegativeCase" },
+           description = "podio {getReminder} integration test with mandatory parameters.")
    public void testGetReminderWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:getReminder");
@@ -454,7 +463,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for getReminder method.
     */
-   @Test(dependsOnMethods = { "testGetReminderWithMandatoryParameters" }, description = "podio {getReminder} integration test with negative case.")
+   @Test(dependsOnMethods = { "testGetReminderWithMandatoryParameters" },
+           description = "podio {getReminder} integration test with negative case.")
    public void testGetReminderWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:getReminder");
@@ -469,13 +479,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for assignTask method with mandatory parameters.
     */
-   @Test(dependsOnMethods = { "testGetReminderWithNegativeCase" }, description = "podio {assignTask} integration test with mandatory parameters.")
+   @Test(dependsOnMethods = { "testGetReminderWithNegativeCase" },
+           description = "podio {assignTask} integration test with mandatory parameters.")
    public void testAssignTaskWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:assignTask");
@@ -495,7 +505,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for assignTask method.
     */
-   @Test(dependsOnMethods = { "testAssignTaskWithMandatoryParameters" }, description = "podio {assignTask} integration test with negative case.")
+   @Test(dependsOnMethods = { "testAssignTaskWithMandatoryParameters" },
+           description = "podio {assignTask} integration test with negative case.")
    public void testAssignTaskWithNegativeCase() throws IOException, JSONException, InterruptedException {
    
       Thread.sleep(timeOut);
@@ -512,13 +523,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_propagate"),
             apiRestResponse.getBody().getString("error_propagate"));
-      
    }
    
    /**
     * Positive test case for updateTask method with optional parameters.
     */
-   @Test(dependsOnMethods = { "testAssignTaskWithNegativeCase" }, description = "podio {updateTask} integration test with optonal parameters.")
+   @Test(dependsOnMethods = { "testAssignTaskWithNegativeCase" },
+           description = "podio {updateTask} integration test with optonal parameters.")
    public void testUpdateTaskWithOptionalParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:updateTask");
@@ -541,7 +552,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for updateTask method.
     */
-   @Test(dependsOnMethods = { "testUpdateTaskWithOptionalParameters" }, description = "podio {updateTask} integration test with negative case.")
+   @Test(dependsOnMethods = { "testUpdateTaskWithOptionalParameters" },
+           description = "podio {updateTask} integration test with negative case.")
    public void testUpdateTaskWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:updateTask");
@@ -556,13 +568,13 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
       Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
       Assert.assertEquals(esbRestResponse.getBody().getString("error_description"), apiRestResponse.getBody()
             .getString("error_description"));
-      
    }
    
    /**
     * Positive test case for completeTask method with mandatory parameters.
     */
-   @Test(dependsOnMethods = { "testUpdateTaskWithNegativeCase" }, description = "podio {completeTask} integration test with mandatory parameters.")
+   @Test(dependsOnMethods = { "testUpdateTaskWithNegativeCase" },
+           description = "podio {completeTask} integration test with mandatory parameters.")
    public void testCompleteTaskWithMandatoryParameters() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:completeTask");
@@ -581,7 +593,8 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
    /**
     * Negative test case for completeTask method.
     */
-   @Test(dependsOnMethods = { "testCompleteTaskWithMandatoryParameters" }, description = "podio {completeTask} integration test with negative case.")
+   @Test(dependsOnMethods = { "testCompleteTaskWithMandatoryParameters" },
+           description = "podio {completeTask} integration test with negative case.")
    public void testCompleteTaskWithNegativeCase() throws IOException, JSONException {
    
       esbRequestHeadersMap.put("Action", "urn:completeTask");
@@ -598,5 +611,4 @@ public class PodioConnectorIntegrationTest extends ConnectorIntegrationTestBase 
             .getString("error_description"));
       
    }
-   
 }
