@@ -19,8 +19,22 @@ STEPS:
 
 2. Please make sure that Axis configurations are enabled (\repository\conf\axis2\axis2.xml) according to the file type to be uploaded.
    eg:upload text file
-       <messageFormatter contentType="text/html" class="org.wso2.carbon.relay.ExpandingMessageFormatter"/>
-       <messageBuilder contentType="text/html" class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
+
+       i) Please make sure that the below mentioned Axis configurations are enabled (/repository/conf/axis2/axis2.xml).
+
+       		Message Formatter :
+       		<messageFormatter contentType="multipart/form-data" class="org.wso2.carbon.relay.ExpandingMessageFormatter"/>
+
+       		Message Builder :
+       		<messageBuilder contentType="multipart/form-data" class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
+
+       	ii) Please make sure that the below mentioned Axis configurations are <------DISABLED------> (if already enabled).(/repository/conf/axis2/axis2.xml).
+
+       		Message Formatter :
+       		<messageFormatter contentType="multipart/form-data" class="org.apache.axis2.transport.http.MultipartFormDataFormatter"/>
+
+       		Message Builder :
+       		<messageBuilder contentType="multipart/form-data" class="org.apache.axis2.builder.MultipartFormDataBuilder"/>
 
 3. Follow the below mentioned steps to create a new Podio account:
 
